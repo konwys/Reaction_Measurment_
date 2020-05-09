@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -19,13 +12,14 @@ namespace WindowsFormsApp1
         int s = 0; // zmienne uzywane do timerow 
         public int i = 0;
         public int j = 0;
-        public  int k = 0;
+        public int k = 0;
         public int p = 0;
         private bool x1 = false; // zmienne gdy pojawia sie obrazek
         private bool x2 = false;
         private bool x3 = false;
         private bool x4 = false;
-        private bool y1 =false; // zmienne gdy wciskamy button
+
+        private bool y1 = false; // zmienne gdy wciskamy button
         private bool y2 = false;
         private bool y3 = false;
         private bool y4 = false;
@@ -35,69 +29,43 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            
         }
-
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
-            MessageBox.Show("Witaj"+"\r\n\"" +
-                "Za chwilę przystąpisz do testu Twojej reakcji"+
-                "\r\n\""+"Aby rozpocząć wcisnij START");
+            MessageBox.Show("Witaj" + "\r\n\"" +
+                "Za chwilę przystąpisz do testu Twojej reakcji" +
+                "\r\n\"" + "Aby rozpocząć wcisnij START");
             chart1.Visible = false;
         }
 
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-       
-       
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
-
             if (bt_start_clicked == true)
             {
                 int wylosowana = rnd.Next(0, 6);
-              
-                // int losowy_czas = r.Next(1000, 4000);
-                //  t.Interval = losowy_czas;
 
                 switch (wylosowana)
                 {
-
                     case 1:
-                       
                         x1 = true;
-                       
-                        this.pictureBox1.Load("C:\\Users\\Public\\zielone.jpg");
-               
-                        
-                       break;
-
-                   case 2:
-                        x2= true;
-                        this.pictureBox2.Load("C:\\Users\\Public\\zielone.jpg");
-                      
+                        this.pictureBox1.Load(@"zielone.jpg");
                         break;
 
+                    case 2:
+                        x2 = true;
+                        this.pictureBox2.Load(@"zielone.jpg");
+                        break;
 
                     case 3:
                         x3 = true;
-                        this.pictureBox3.Load("C:\\Users\\Public\\zielone.jpg");
-                     
-
+                        this.pictureBox3.Load(@"zielone.jpg");
                         break;
 
                     case 4:
                         x4 = true;
-                        this.pictureBox4.Load("C:\\Users\\Public\\zielone.jpg");
-                
+                        this.pictureBox4.Load(@"zielone.jpg");
                         break;
 
                 }
@@ -105,12 +73,10 @@ namespace WindowsFormsApp1
                 {
                     timer1.Stop();
                     timer2.Stop();
-                   
+
                     int wynik;
                     wynik = (i + j + k + p) / 4;
-                    MessageBox.Show("Twój średni czas reakcji wynosi " + wynik.ToString()+"s") ;
-                    
-                    
+                    MessageBox.Show("Twój średni czas reakcji wynosi " + wynik.ToString() + "s");
                 }
 
             }
@@ -124,7 +90,6 @@ namespace WindowsFormsApp1
         private void bstart_Click(object sender, EventArgs e)
         {
             bt_start_clicked = true;
-           
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -148,26 +113,19 @@ namespace WindowsFormsApp1
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.pictureBox1.Image = null;
-            y1 =true;
+            y1 = true;
         }
 
-   
+
         // timer główny
         private void timer2_Tick(object sender, EventArgs e)
         {
-            
-
             string czas = "";
-            if(bt_start_clicked == true)
+            if (bt_start_clicked == true)
             {
-
                 int h = 0;
                 int m = 0;
-                
                 s++;
-
-
-
                 if (s == 60)
                 {
                     m++;
@@ -178,12 +136,6 @@ namespace WindowsFormsApp1
                     h++;
                 }
 
-              /*  if (y1 == true)
-                {
-                    timer2.Stop();
-
-                }
-                */
                 ///////////// wyswieltanie czasu
 
                 if (h < 10)
@@ -216,7 +168,6 @@ namespace WindowsFormsApp1
                     czas += s;
                 }
 
-
                 label1.Text = czas;
                 if (s == 10 & y1 == false & y2 == false & y3 == false & y4 == false)
                 {
@@ -225,97 +176,73 @@ namespace WindowsFormsApp1
             }
 
         }
+
         // timery liczace czas reakcji 
         private void timer3_Tick(object sender, EventArgs e)
         {
-           
+
             if (x1 == true)
-          
             {
                 timer3.Start();
                 i++;
-               
-
-             }
+            }
 
 
             if (y1 == true)
-             {
+            {
+                timer3.Stop();
+            }
 
-                 timer3.Stop();
-                
-             }
 
-             
         }
 
         private void timer4_Tick(object sender, EventArgs e)
         {
             if (x2 == true)
-
             {
                 timer4.Start();
                 j++;
-
-
             }
-
 
             if (y2 == true)
             {
-
                 timer4.Stop();
-                
             }
-
 
         }
 
         private void timer5_Tick(object sender, EventArgs e)
         {
             if (x3 == true)
-
             {
                 timer5.Start();
-                 k++;
-
-
+                k++;
             }
 
-
-            if (y3== true)
+            if (y3 == true)
             {
-
                 timer5.Stop();
-                
             }
         }
 
         private void timer6_Tick(object sender, EventArgs e)
         {
             if (x4 == true)
-
             {
                 timer6.Start();
                 p++;
-
-
             }
-
 
             if (y4 == true)
             {
-
                 timer6.Stop();
-              
             }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-       
 
-    }
+        }
 
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
@@ -347,35 +274,20 @@ namespace WindowsFormsApp1
                 this.b_start.Focus();
                 this.b_start.PerformClick();
             }
-        }
+        } // obsluga klawiatury
 
         private void bstop_Click(object sender, EventArgs e)
         {
             this.Close();
-    
-        }
 
-        
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
             chart1.Visible = true;
-
             chart1.ChartAreas[0].AxisX.Minimum = 1;
             chart1.ChartAreas[0].AxisX.Maximum = 3;
-
-
-
-           
-
-
-           
         }
-
-
-
-
 
     }
 }

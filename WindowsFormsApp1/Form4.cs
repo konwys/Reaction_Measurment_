@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Media;
+using System.Windows.Forms;
 namespace WindowsFormsApp1
 {
     public partial class Form4 : Form
     {
-        SoundPlayer airhorn = new SoundPlayer("C:\\Users\\Public\\airhorn.wav");
-        SoundPlayer slon = new SoundPlayer("C:\\Users\\Public\\slon.wav");
-        SoundPlayer syrena = new SoundPlayer("C:\\Users\\Public\\syrena.wav");
+        SoundPlayer airhorn = new SoundPlayer(@"airhorn.wav");
+        SoundPlayer slon = new SoundPlayer(@"slon.wav");
+        SoundPlayer syrena = new SoundPlayer(@"syrena.wav");
         Random rnd = new Random();
-        int i,j,k,l = 0;
+        int i, j, k, l = 0;
         int s = 0;
         bool xs = false;
         bool x1 = false;
@@ -31,17 +24,17 @@ namespace WindowsFormsApp1
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -50,39 +43,10 @@ namespace WindowsFormsApp1
             {
                 timer1.Start();
                 i++;
-                /*
-                if (i ==2) 
-                {
-                    player.Play();
-                }
-                else if (x3==true)
-                {
-                    player.Stop();
-                }
-
-                if (i == 5)
-                {
-                    player3.Play();
-                }
-                else if (x1 == true)
-                {
-                    player3.Stop();
-                }
-
-                if (i == 5)
-                {
-                    player2.Play();
-                }
-                else if (x2 == true)
-                {
-                    player2.Stop();
-                }
-                */
-
                 int wylosowana = rnd.Next(0, 6);
+
                 switch (wylosowana)
                 {
-
                     case 1:
                         p1 = true;
                         airhorn.Play();
@@ -107,29 +71,24 @@ namespace WindowsFormsApp1
                     timer1.Stop();
                     int wynik;
                     wynik = (j + k + l) / 3;
-                    MessageBox.Show("Twój czas reakcji to"+wynik.ToString()+"s");
-                   
+                    MessageBox.Show("Twój czas reakcji to" + wynik.ToString() + "s");
 
                 }
 
             }
 
-            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             x1 = true;
-           airhorn.Stop();
-            
+            airhorn.Stop();
         }
 
         private void bstart_Click(object sender, EventArgs e)
         {
             xs = true;
-
         }
-
-      
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -140,22 +99,20 @@ namespace WindowsFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             x3 = true;
-           syrena.Stop();
+            syrena.Stop();
         }
 
         private void timer5_Tick(object sender, EventArgs e)
         {
             string czas = "";
-            if (xs== true)
+            if (xs == true)
             {
                 timer5.Start();
-              
+
                 int h = 0;
                 int m = 0;
-               
-                s++;
-                
 
+                s++;
 
                 if (s == 10)
                 {
@@ -166,11 +123,10 @@ namespace WindowsFormsApp1
                 {
                     m++;
                 }
-                if (m== 60)
+                if (m == 60)
                 {
                     h++;
                 }
-
 
                 ///////////// wyswieltanie czasu
 
@@ -203,9 +159,6 @@ namespace WindowsFormsApp1
                 {
                     czas += s;
                 }
-             
-              
-
 
                 label1.Text = czas;
 
@@ -230,7 +183,6 @@ namespace WindowsFormsApp1
             {
                 this.button1.Focus();
                 this.button1.PerformClick();
-
             }
             if (e.KeyCode == Keys.A)
             {
@@ -258,69 +210,51 @@ namespace WindowsFormsApp1
             airhorn.Stop();
             slon.Stop();
             syrena.Stop();
-
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            
             if (p1 == true)
             {
                 timer2.Start();
-               
+
                 j++;
-
-
             }
 
             if (x1 == true)
             {
                 timer2.Stop();
-
             }
-            
-
-
-
         }
 
 
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-
-            
             if (p2 == true)
             {
                 timer3.Start();
                 k++;
-
-
             }
 
             if (x2 == true)
             {
                 timer3.Stop();
-
             }
         }
 
         private void timer4_Tick(object sender, EventArgs e)
         {
-           
+
             if (p3 == true)
             {
                 timer3.Start();
                 l++;
-
-
             }
 
             if (x3 == true)
             {
                 timer3.Stop();
-               
-
             }
         }
     }

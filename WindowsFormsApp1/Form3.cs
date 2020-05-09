@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -34,13 +27,12 @@ namespace WindowsFormsApp1
         public Form3()
         {
             InitializeComponent();
-            
-         
+
         }
 
         private void Form3_Load(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -50,9 +42,6 @@ namespace WindowsFormsApp1
             {
                 int wylosowana = rnd.Next(0, 6);
 
-                // int losowy_czas = r.Next(1000, 4000);
-                //  t.Interval = losowy_czas;
-
                 switch (wylosowana)
                 {
 
@@ -60,28 +49,28 @@ namespace WindowsFormsApp1
 
                         x1 = true;
 
-                        this.pictureBox1.Load("C:\\Users\\Public\\zielone.jpg");
+                        this.pictureBox1.Load(@"zielone.jpg");
 
 
                         break;
 
                     case 2:
                         x2 = true;
-                        this.pictureBox2.Load("C:\\Users\\Public\\zielone.jpg");
+                        this.pictureBox2.Load(@"zielone.jpg");
 
                         break;
 
 
                     case 3:
                         x3 = true;
-                        this.pictureBox3.Load("C:\\Users\\Public\\zielone.jpg");
+                        this.pictureBox3.Load(@"zielone.jpg");
 
 
                         break;
 
                     case 4:
                         x4 = true;
-                        this.pictureBox4.Load("C:\\Users\\Public\\zielone.jpg");
+                        this.pictureBox4.Load(@"zielone.jpg");
 
                         break;
 
@@ -91,15 +80,9 @@ namespace WindowsFormsApp1
                     timer1.Stop();
                     timer2.Stop();
 
-                 
-
-
                 }
 
             }
-
-
-
 
         }
 
@@ -153,8 +136,6 @@ namespace WindowsFormsApp1
 
                 s++;
 
-
-
                 if (s == 60)
                 {
                     m++;
@@ -165,12 +146,6 @@ namespace WindowsFormsApp1
                     h++;
                 }
 
-                /*  if (y1 == true)
-                  {
-                      timer2.Stop();
-
-                  }
-                  */
                 ///////////// wyswieltanie czasu
 
                 if (h < 10)
@@ -203,13 +178,12 @@ namespace WindowsFormsApp1
                     czas += s;
                 }
 
-
                 label1.Text = czas;
 
             }
         }
 
-        private void Form3_KeyDown(object sender, KeyEventArgs e)
+        private void Form3_KeyDown(object sender, KeyEventArgs e) // obsluga klawiatury
         {
             if (e.KeyCode == Keys.NumPad3)
             {
@@ -243,19 +217,17 @@ namespace WindowsFormsApp1
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-            
+
             o++;
             if (o == 1)
             {
                 MessageBox.Show("Witaj w fazie szkoleniowej" + "\r\n\"" +
                 "*Po wciśnięciu START w różnych miejscach wyświetlą się obrazki " +
                 "\r\n\"" + "*Pod obrazkami znajduja się guziki, które musisz wcisnąć po pojawieniu się obrazka" + "\r\n"
-                +"*W ten sposób zmierzymy czas Twojej reakcji "+ "\r\n\"" +"*Numery na guzikach odpowiadają klawiszą na NumPadzie"+ "\r\n\""+"*Aby zakończyć wciśnij KONIEC");
-
+                + "*W ten sposób zmierzymy czas Twojej reakcji " + "\r\n\"" + "*Numery na guzikach odpowiadają klawiszą na NumPadzie" + "\r\n\"" + "*Aby zakończyć wciśnij KONIEC");
 
             }
         }
     }
-
 
 }
